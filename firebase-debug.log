@@ -1,0 +1,25 @@
+[debug] [2022-01-25T15:59:51.747Z] ----------------------------------------------------------------------
+[debug] [2022-01-25T15:59:51.749Z] Command:       C:\Program Files\nodejs\node.exe E:\ANUL III\SEM I\React + Angular\shop-project\tech-shop\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-01-25T15:59:51.750Z] CLI Version:   10.1.2
+[debug] [2022-01-25T15:59:51.750Z] Platform:      win32
+[debug] [2022-01-25T15:59:51.750Z] Node Version:  v14.17.4
+[debug] [2022-01-25T15:59:51.751Z] Time:          Tue Jan 25 2022 17:59:51 GMT+0200 (Eastern European Standard Time)
+[debug] [2022-01-25T15:59:51.751Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-25T15:59:51.793Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-25T15:59:51.793Z] > authorizing via signed-in user (iulyangal186@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\ANUL III\SEM I\React + Angular\shop-project\tech-shop
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
