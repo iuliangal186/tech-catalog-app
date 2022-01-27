@@ -20,7 +20,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router,) {
     this.subscription = this.productService.getAll()
       .subscribe((products:Product[]) => this.filteredProducts = this.products = products);
-    console.log(this.products);
+    console.log(this.product);
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id)
       this.productService.get(this.id).pipe(take(1)).subscribe(p => this.product = p);

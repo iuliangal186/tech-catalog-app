@@ -35,6 +35,7 @@ import {ShoppingCartService} from "./shopping-cart.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDeleteProductsComponent } from './admin/admin-delete-products/admin-delete-products.component';
 import { RegisterComponent } from './register/register.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { RegisterComponent } from './register/register.component';
     ProductFilterComponent,
     ProductCardComponent,
     AdminDeleteProductsComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,7 @@ import { RegisterComponent } from './register/register.component';
 
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
-      {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
+      {path: 'my/account', component: UserAccountComponent, canActivate: [AuthGuard]},
 
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
 

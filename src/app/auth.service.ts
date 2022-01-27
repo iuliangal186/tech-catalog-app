@@ -7,27 +7,19 @@ import {AppUser} from "./models/app-user";
 import {switchMap} from "rxjs/operators";
 import { of } from 'rxjs';
 import {UserService} from "./user.service";
+import {User} from "firebase";
+import App = firebase.app.App;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user$: Observable<firebase.User | null>;
-  // userData: any;
 
   constructor(private afAuth: AngularFireAuth, private route: ActivatedRoute,
               private userService: UserService) {
     this.user$ = afAuth.authState;
-    // this.afAuth.authState.subscribe(user => {
-    //   if (user) {
-    //     this.userData = user;
-    //     localStorage.setItem('user', JSON.stringify(this.userData));
-    //     JSON.parse(<string>localStorage.getItem('user'));
-    //   } else {
-    //     localStorage.setItem('user', "");
-    //     JSON.parse(<string>localStorage.getItem('user'));
-    //   }
-    // })
+    console.log(this.user$);
   }
 
   signUp(email: string | undefined, password: string | undefined) {
@@ -75,6 +67,7 @@ export class AuthService {
     return this.user$
       .pipe(switchMap(user => {
         if (user) return this.userService.get(user.uid).valueChanges();
+
 
         return of(null);
       }));
