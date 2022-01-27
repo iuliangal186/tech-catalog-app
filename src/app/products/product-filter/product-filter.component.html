@@ -1,0 +1,17 @@
+<div >
+  <div class="list-group" >
+    <a class="list-group-item list-group-item-action
+"        [class.active]="!category"
+       routerLink="/">
+      AllCategories
+    </a>
+    <a *ngFor="let c of categories$ | async"
+       class="list-group-item list-group-item-action"
+       routerLink="/"
+       [queryParams]="{category: c.key}"
+       [class.active]="category === c.key">
+      {{c.payload.val().name}}
+    </a>
+  </div>
+</div>
+

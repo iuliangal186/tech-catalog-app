@@ -13,10 +13,51 @@ import {UserService} from "./user.service";
 })
 export class AuthService {
   user$: Observable<firebase.User | null>;
+  // userData: any;
 
   constructor(private afAuth: AngularFireAuth, private route: ActivatedRoute,
               private userService: UserService) {
     this.user$ = afAuth.authState;
+    // this.afAuth.authState.subscribe(user => {
+    //   if (user) {
+    //     this.userData = user;
+    //     localStorage.setItem('user', JSON.stringify(this.userData));
+    //     JSON.parse(<string>localStorage.getItem('user'));
+    //   } else {
+    //     localStorage.setItem('user', "");
+    //     JSON.parse(<string>localStorage.getItem('user'));
+    //   }
+    // })
+  }
+
+  signUp(email: string | undefined, password: string | undefined) {
+    if (email != null) {
+      if (password != null) {
+        this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(res => {
+          console.log("You are successfully signed up!", res);
+        })
+          .catch(error => {
+            console.log("Something is wrong", error.message);
+          })
+      }
+    }
+  }
+
+  signIn(email: string | undefined, password: string | undefined) {
+    if (email != null) {
+      if (password != null) {
+        this.afAuth.auth.signInWithEmailAndPassword(email, password).then(res => {
+          console.log('You are Successfully logged in!', res);
+        }).catch(error => {
+          console.log('Something is wrong:', error.message);
+        });
+      }
+    }
+
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut();
   }
 
   login() {

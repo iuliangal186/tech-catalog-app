@@ -1,5 +1,6 @@
 <p>
   <a routerLink="/admin/products/new" class = "btn btn-primary">New product</a>
+  <a routerLink="/admin/products/delete" class = "btn btn-primary">Delete</a>
 </p>
 <p>
   <input
@@ -19,13 +20,7 @@
     <tr *ngFor="let p of filteredProducts">
       <td>{{p.title}}</td>
       <td>{{p.price}}</td>
-      <td>
-        <a [routerLink]="['/admin/products/', p.key]">
-          Edit
-        </a>
-      </td>
     </tr>
   </tbody>
 </table>
-
 

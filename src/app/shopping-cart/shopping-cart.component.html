@@ -1,1 +1,17 @@
-<p>shopping-cart works!</p>
+<h1>Shopping Cart</h1>
+<ng-container>
+  <table class="table">
+    <thead>
+      <th>Product</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let productId of cart$">
+        <td>
+          {{productId.product.title}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+

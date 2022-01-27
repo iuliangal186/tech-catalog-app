@@ -8,9 +8,27 @@ import {AuthService} from "../auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  email: string | undefined;
+  password: string | undefined;
 
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
+  signUp() {
+    this.auth.signUp(this.email, this.password);
+    this.email = '';
+    this.password = '';
+  }
+
+  signIn() {
+    this.auth.signIn(this.email, this.password);
+    this.email = '';
+    this.password = '';
+
+  }
+
+  signOut() {
+    this.auth.signOut();
+  }
 
   ngOnInit(): void {
   }

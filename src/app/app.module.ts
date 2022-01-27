@@ -4,6 +4,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database'
 import { AngularFireAuthModule} from 'angularfire2/auth'
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
@@ -27,6 +29,13 @@ import {AdminAuthGuard} from "./admin-auth-guard.service";
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import {CategoryService} from "./category.service";
 import {ProductService} from "./product.service";
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import {ShoppingCartService} from "./shopping-cart.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminDeleteProductsComponent } from './admin/admin-delete-products/admin-delete-products.component';
+import { RegisterComponent } from './register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -41,10 +50,16 @@ import {ProductService} from "./product.service";
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent,
+    AdminDeleteProductsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
+    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -54,6 +69,7 @@ import {ProductService} from "./product.service";
     RouterModule.forRoot([
       {path: '', component: ProductsComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
 
@@ -64,10 +80,12 @@ import {ProductService} from "./product.service";
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
 
       {path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/products/delete', component: AdminDeleteProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]}
     ]),
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
 
   ],
   providers: [
@@ -76,7 +94,8 @@ import {ProductService} from "./product.service";
     UserService,
     AdminAuthGuard,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
