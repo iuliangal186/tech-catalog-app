@@ -8,12 +8,25 @@
       <ng-container *ngFor="let p of filteredProducts; let i = index">
         <div class="col">
           <div>
-            <div class="card" style="width: 20rem;">
+            <div class="card" style="width: 28rem;">
               <img class="card-img-top" src="{{p.imageUrl}}">
               <div class="card-body">
                 <h4 class="card-title">{{p.title}}</h4>
                 <p class="card-text">{{p.price | currency:'EUR':true}}</p>
-                <button (click)="addToCart(p)" class="btn btn-primary">Add to Cart</button>
+                <mat-accordion>
+                  <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header style="background-color: darkgray">
+                      <mat-panel-title >
+                        Description
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p style="margin-top: 10px">{{p.description}}</p>
+<!--                    <div>-->
+<!--                      <p>Favorites: </p>-->
+<!--                      <mat-slide-toggle></mat-slide-toggle>-->
+<!--                    </div>-->
+                  </mat-expansion-panel>
+                </mat-accordion>
               </div>
             </div>
           </div>

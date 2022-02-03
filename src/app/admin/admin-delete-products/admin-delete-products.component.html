@@ -1,1 +1,29 @@
-<p>admin-delete-products works!</p>
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Click on product you want to delete: </h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let product of products$ | async"
+      >
+        {{ product.title }}
+        <button type="button" class="btn btn-danger" style="margin-left: 500px; margin-top: -30px" (click)="deleteProduct(product.key)">
+          Delete
+        </button>
+      </li>
+    </ul>
+  </div>
+<!--  <div class="col-md-6">-->
+<!--    <div *ngIf="currentTutorial">-->
+<!--      <app-tutorial-details-->
+<!--        (refreshList)="refreshList()"-->
+<!--        [tutorial]="currentTutorial"-->
+<!--      ></app-tutorial-details>-->
+<!--    </div>-->
+
+<!--    <div *ngIf="!currentTutorial">-->
+<!--      <br />-->
+<!--      <p>Please click on a Tutorial...</p>-->
+<!--    </div>-->
+<!--  </div>-->
+</div>

@@ -11,16 +11,15 @@
           <input type="password" class="form-control" [(ngModel)]="password" id="pwd" placeholder="password">
         </div>
         <div style="margin-top: 10px">
-          <button (click)="signUp()" class="btn btn-primary">Sign Up</button>
           <button (click)="signIn()" class="btn btn-primary"
-                  style="margin-left:50px;"
                   routerLink="/">Login
           </button>
           <button *ngIf="!(auth.user$ | async)"
                   (click)="login()"
                   class="btn btn-primary"
-                  style="margin-left:50px;">Login with Google
+                  style="margin-left:50px; margin-right: 50px">Login with Google
           </button>
+          <button routerLink="/register" class="btn btn-primary">Register</button>
         </div>
 
       </div>

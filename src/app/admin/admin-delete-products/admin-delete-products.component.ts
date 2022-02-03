@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Product} from "../../models/product";
+import {ProductService} from "../../product.service";
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-admin-delete-products',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDeleteProductsComponent implements OnInit {
 
-  constructor() { }
+  products$;
+  currentProduct!: Product;
+  currentIndex = -1;
+  title = '';
+
+  constructor(private productService: ProductService) {
+    this.products$ = this.productService.getAll();
+  }
 
   ngOnInit(): void {
+  }
+
+  deleteProduct(productKey: any): void {
+    this.productService.delete(productKey)
+      .catch(err => console.log(err));
   }
 
 }

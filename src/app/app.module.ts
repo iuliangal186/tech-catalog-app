@@ -12,10 +12,6 @@ import { environment } from 'src/environments/environment';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CheckOutComponent } from './check-out/check-out.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
@@ -36,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDeleteProductsComponent } from './admin/admin-delete-products/admin-delete-products.component';
 import { RegisterComponent } from './register/register.component';
 import { UserAccountComponent } from './user-account/user-account.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -44,10 +42,6 @@ import { UserAccountComponent } from './user-account/user-account.component';
     BsNavbarComponent,
     HomeComponent,
     ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
@@ -62,6 +56,8 @@ import { UserAccountComponent } from './user-account/user-account.component';
     BrowserModule,
     MatCardModule,
     MatInputModule,
+    MatExpansionModule,
+    MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -73,10 +69,7 @@ import { UserAccountComponent } from './user-account/user-account.component';
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'products', component: ProductsComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent},
 
-      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
       {path: 'my/account', component: UserAccountComponent, canActivate: [AuthGuard]},
 
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},

@@ -31,14 +31,20 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="description">Description</label>
+        <input #description="ngModel" ngModel name="description" id="description" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+          Description is required
+        </div>
+      </div>
+      <div class="form-group">
         <label for="imageUrl">Image URL</label>
         <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required>
         <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
           Url is required and check to be valid
         </div>
       </div>
-      <button class="btn btn-primary" type="submit">Save</button>
-      <button type="button"(click)="delete()" class="btn btn-danger">Delete</button>
+      <button class="btn btn-primary" type="submit" style="margin-top: 10px">Save</button>
     </form>
   </div>
   <div class="col-md-6">
@@ -47,6 +53,7 @@
       <div class="card-body">
         <h4 class="card-title">{{title.value}}</h4>
         <p class="card-text">{{price.value | currency:'EUR':true}}</p>
+        <p class="card-text">{{description.value}}</p>
       </div>
     </div>
   </div>

@@ -17,9 +17,21 @@ export class ProductService {
   getAll() {
     return this.db.list('/products')
       .snapshotChanges().pipe(map(changes => {
-        return changes.map(c => ({ ...c.payload.val() as Product }));
+        return changes.map(c => {
+          const data = c.payload.val() as Product;
+          const key = c.payload.key;
+          return {key, ...data};
+        });
       }));
   }
+
+  // getAllForDelete() {
+  //   return this.db.list('/products')
+  //     .snapshotChanges().pipe(map(changes => {
+  //       console.log(changes);
+  //       return changes;
+  //     }));
+  // }
 
   get(productId: any) {
     return this.db.object('/products' + productId).valueChanges();
@@ -29,7 +41,7 @@ export class ProductService {
     return this.db.object('/products/' + productId).update(product);
   }
 
-  delete(productId: any) {
+  delete(productId: any): Promise<void> {
     return this.db.object('/products/' + productId).remove();
   }
 }

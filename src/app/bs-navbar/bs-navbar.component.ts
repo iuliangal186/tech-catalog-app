@@ -3,6 +3,7 @@ import {AngularFireAuth} from "angularfire2/auth";
 import * as firebase from 'firebase';
 import {AuthService} from "../auth.service";
 import {AppUser} from "../models/app-user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'bs-navbar',
@@ -12,7 +13,7 @@ import {AppUser} from "../models/app-user";
 export class BsNavbarComponent {
   appUser: AppUser | undefined | null;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
     auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
@@ -21,5 +22,6 @@ export class BsNavbarComponent {
 
   logout() {
     this.auth.logout();
+    this.router.navigateByUrl("/login")
   }
 }
